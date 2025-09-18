@@ -43,29 +43,30 @@ void mousePressed() {
 }
 
 void drawLightning(int targetX, int targetY) {
-  int x1 = targetX;
-  int y1 = 0;
-  while (y1 < targetY) {
+  int x1 =targetX;
+  int y1= 0;
+  while (y1<targetY){
     int x2 = (int)lerp(x1, targetX, 0.7) + (int)(Math.random()*40)-20;
     int y2 = y1 + (int)(Math.random()*20)+10;
-    drawBoltSegment(x1, y1, x2, y2);
+    strokeWeight(6);
+    stroke(120, 180, 255, 80);
+    line(x1, y1, x2, y2);
+    strokeWeight(3);
+    stroke(255, 255, 255);
+    line(x1, y1, x2, y2);
+    x1=x2;
+    y1= y2;
+  }
+  while (y1<height){
+    int x2=x1+(int)(Math.random()*40)-20;
+    int y2=y1+(int)(Math.random()*20)+10;
+    strokeWeight(6);
+    stroke(120, 180, 255, 80);
+    line(x1, y1, x2, y2);
+    strokeWeight(3);
+    stroke(255, 255, 255);
+    line(x1, y1, x2, y2);
     x1 = x2;
     y1 = y2;
   }
-  while (y1 < height) {
-    int x2 = x1 + (int)(Math.random()*40)-20;
-    int y2 = y1 + (int)(Math.random()*20)+10;
-    drawBoltSegment(x1, y1, x2, y2);
-    x1 = x2;
-    y1 = y2;
-  }
-}
-
-void drawBoltSegment(int x1, int y1, int x2, int y2) {
-  strokeWeight(6);
-  stroke(120, 180, 255, 80);
-  line(x1, y1, x2, y2);
-  strokeWeight(3);
-  stroke(255, 255, 255);
-  line(x1, y1, x2, y2);
 }
